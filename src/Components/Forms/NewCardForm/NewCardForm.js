@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 
-import styles from './new-card-form.m.css';
 import InputField from '../../InputField/InputField';
 import { newCardValidation } from '../../ValidationScheme/ValidationScheme';
+import {
+  getCardScheme,
+  useGetCardSchemeQuery,
+} from '../../../Store/Slice/checkerSliceApi';
+
+import styles from './new-card-form.m.css';
+import { useAddNewCardMutation } from '../../../Store/Slice/apiSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const NewCardForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log({ ...values });
+  // const dispatch = useDispatch();
+  // const data = dispatch(getCardScheme(5355));
+  // console.log(data);
+  const [checker, setChecker] = useState('');
+  const { data = {}, isError } = useGetCardSchemeQuery(checker);
+  // const [addNewCard] = useAddNewCardMutation();
+  const handleSubmit = async (values, { resetForm }) => {
+    const checkNum = Number(
+      values.cardNumber.toString().split('').slice(0, 6).join('')
+    );
+    // const data = dispatch(getCardScheme(checkNum)).then((data) =>
+    //   console.log(data)
+    // );
+    setChecker(checkNum);
+    try {
+      const newData = await data;
+      await addNewCard({ ...values, scheme: newData.scheme });
+    } catch (e) {
+      alert(`Sorry ${e.message}`);
+    }
     resetForm();
   };
+
   return (
     <div className={styles.form__wrapper}>
       <Formik
