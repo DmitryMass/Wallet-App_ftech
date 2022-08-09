@@ -1,0 +1,7 @@
+.cards__navigate {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}

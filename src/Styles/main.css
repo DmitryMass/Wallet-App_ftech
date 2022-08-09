@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+  /* Containers */
+  --x-large: 1230px;
+  --large: 992px;
+  --medium: 768px;
+  --small: 576px;
+  /* Container Screens */
+  --x-large-screen: 1140px;
+  --large-screen: 960px;
+  --medium-screen: 720px;
+  --small-screen: 540px;
+}
+
+.wrapper {
+  min-height: calc(100vh - 200px);
+}
+
+/* Containers */
+.container {
+  max-width: var(--x-large);
+  padding: 0 25px;
+  margin: 0 auto;
+  box-sizing: content-box;
+  width: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: var(--x-large-screen);
+  }
+}
+@media screen and (max-width: 992px) {
+  .container {
+    max-width: var(--large-screen);
+    padding: 0 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: var(--medium-screen);
+  }
+}
+@media screen and (max-width: 576px) {
+  .container {
+    max-width: var(--small-screen);
+  }
+}
+
+/* Title */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.title__balance {
+  font-size: 18px;
+}
+
+/* Button */
+.button {
+  border: none;
+  background: rgb(152, 151, 151);
+  font-size: 14px;
+  line-height: 18px;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 8px;
+  height: 100%;
+}
+
+.button__success {
+  background-color: rgb(9, 185, 9);
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 21px;
+}
+.button__reversal {
+  background-color: rgb(184, 2, 2);
+}
+
+.button__edit {
+  background: rgb(152, 151, 151);
+  font-size: 12px;
+}

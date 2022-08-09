@@ -1,0 +1,24 @@
+.card__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.card__card {
+  margin-right: 5px;
+  padding: 15px;
+  width: 350px;
+  height: 150px;
+  box-shadow: 0px 0px 4px rgba(100, 100, 100, 0.353);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url('https://images.unsplash.com/photo-1565711561500-49678a10a63f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  border-radius: 8px;
+}
+.card__name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
