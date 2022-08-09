@@ -3,38 +3,57 @@ import { Formik, Field, Form } from 'formik';
 
 import styles from './new-card-form.m.css';
 import InputField from '../../InputField/InputField';
+import { newCardValidation } from '../../ValidationScheme/ValidationScheme';
 
 const NewCardForm = () => {
-  const handleSubmit = (values, action) => {
-    console.log({ ...values }, action);
+  const handleSubmit = (values, { resetForm }) => {
+    console.log({ ...values });
+    resetForm();
   };
   return (
     <div className={styles.form__wrapper}>
       <Formik
         initialValues={{
           cardNumber: '',
-          expDate: '',
+          date: '',
           cvv: '',
           amount: '',
           currency: 'UAH',
+          bank: '',
         }}
         onSubmit={handleSubmit}
+        validationSchema={newCardValidation}
       >
         <Form>
+          <Field
+            id='bank'
+            name='bank'
+            component={InputField}
+            placeholder='Mono, privat etc'
+          />
           <Field
             id='cardNumber'
             name='cardNumber'
             type='number'
             component={InputField}
+            placeholder='Type your card number'
           />
+
           <div>
             <Field
-              id='expDate'
-              name='expDate'
+              id='date'
+              name='date'
               type='number'
               component={InputField}
+              placeholder='Type expire date'
             />
-            <Field id='cvv' name='cvv' type='number' component={InputField} />
+            <Field
+              id='cvv'
+              name='cvv'
+              type='number'
+              component={InputField}
+              placeholder='Type card cvv'
+            />
           </div>
           <div>
             <Field
@@ -42,6 +61,7 @@ const NewCardForm = () => {
               name='amount'
               type='number'
               component={InputField}
+              placeholder='Amount money'
             />
             <Field
               component='select'

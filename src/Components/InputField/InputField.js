@@ -7,8 +7,10 @@ const InputField = ({
   form,
   type,
   id,
+  placeholder,
 }) => {
   const error = form.errors[name] && form.touched[name];
+
   return (
     <div>
       {error && <div className='error'>{form.errors[name]}</div>}
@@ -20,6 +22,7 @@ const InputField = ({
         value={value}
         onChange={onChange}
         onBlur={onBlur}
+        placeholder={placeholder}
       />
     </div>
   );
