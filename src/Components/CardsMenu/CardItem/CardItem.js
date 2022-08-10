@@ -74,7 +74,7 @@ const CardItem = ({ card }) => {
           </div>
           <div className={styles.card__copy}>
             <CopyToClipboard text={cardNumber} onCopy={() => setCopy(true)}>
-              <button className={styles.card__copy_btn}>Copy</button>
+              <button className={styles.card__copy_btn}>Копіювати</button>
             </CopyToClipboard>
             {copy ? <span>Copied</span> : null}
           </div>
