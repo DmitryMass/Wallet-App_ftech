@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useUpdateCardMutation } from '../../../../Store/Slice/apiSlice';
 import Button from '../../../Button';
 import EditModal from '../../../Modals/EditModal/EditModal';
 
@@ -8,7 +9,20 @@ import styles from './my-card-item.m.css';
 const MyCardItem = ({ card }) => {
   const [edit, setEdit] = useState(false);
   const hanldeEditTrue = () => setEdit(true);
+  const handleEditFalse = () => setEdit(false);
   const { amount, currency, scheme } = card;
+
+  const [updateCard] = useUpdateCardMutation();
+
+  const handleSubmitModalForm = async (values, { resetForm }) => {
+    try {
+      await updateCard({ ...card, ...values });
+      setEdit(false);
+      resetForm();
+    } catch (e) {
+      alert('Problem with updating');
+    }
+  };
 
   return (
     <>
@@ -21,7 +35,13 @@ const MyCardItem = ({ card }) => {
           Редагувати
         </Button>
       </li>
-      {edit ? <EditModal card={card} setEdit={setEdit} /> : null}
+      {edit ? (
+        <EditModal
+          card={card}
+          setEdit={handleEditFalse}
+          handleSubmitModalForm={handleSubmitModalForm}
+        />
+      ) : null}
     </>
   );
 };

@@ -1,3 +1,23 @@
+.edit__modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(137, 137, 137, 0.093);
+  z-index: 1;
+}
+.edit__content {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  width: 70vw;
+  height: 70vh;
+}
+
 .edit__save {
   background-color: rgb(9, 185, 9);
   padding: 10px 20px;

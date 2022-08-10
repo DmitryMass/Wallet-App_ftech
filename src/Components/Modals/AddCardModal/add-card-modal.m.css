@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(137, 137, 137, 0.093);
+  z-index: 1;
 }
 .modal__content {
   padding: 20px;
