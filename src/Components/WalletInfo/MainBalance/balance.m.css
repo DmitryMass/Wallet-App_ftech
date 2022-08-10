@@ -12,3 +12,11 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.balance__total_ua,
+.balance__total_usd,
+.balance__total_eur {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 500;
+}

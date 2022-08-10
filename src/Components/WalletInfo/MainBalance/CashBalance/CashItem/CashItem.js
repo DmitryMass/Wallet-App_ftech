@@ -30,7 +30,7 @@ const CashItem = ({ cash }) => {
   return (
     <>
       <li className={styles.cash__item}>
-        <span>
+        <span className={styles.cash__balance}>
           {' '}
           - {new Intl.NumberFormat().format(amount)} {currency}
         </span>
