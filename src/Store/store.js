@@ -19,5 +19,7 @@ const store = configureStore({
 });
 
 setupListeners(store.dispatch);
+// setuplistener в целом не нужен
+// нужен для Рефетча при фокусе или конекте, на будущее )
 
 export default store;

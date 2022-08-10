@@ -14,7 +14,7 @@ const CashBalance = () => {
     <div className={styles.cash__wrapper}>
       <Title modificator={'balance'}>Готівка</Title>
       {isLoading || isError ? (
-        <LoadAndError />
+        <LoadAndError load={isLoading} error={isError} />
       ) : (
         <ul className={styles.cash__balance}>
           {data.length === 0 ? (

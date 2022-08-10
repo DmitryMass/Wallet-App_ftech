@@ -1,12 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './load-error.m.css';
+
+// Вирішив зробити одним компонентом, оскільки більше ніде Лоадер мені не потрібен
 const LoadAndError = ({ load, error }) => {
   if (load) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.loadingio__spinner__dual__ball__6z54vq7xtjq}>
+        <div className={styles.ldio__2z0vk0b3lxc}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    );
   }
   if (error) {
-    return <div>Error</div>;
+    return <div>Вибачте, грошей нема, але ви тримайтесь..</div>;
   }
 };
 
