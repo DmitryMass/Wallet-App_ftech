@@ -1,35 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Field, Form } from 'formik';
 
 import InputField from '../../InputField/InputField';
 import { newCardValidation } from '../../ValidationScheme/ValidationScheme';
-import {
-  getCardScheme,
-  useGetCardSchemeQuery,
-} from '../../../Store/Slice/checkerSliceApi';
+
+import { useLazyGetCardSchemeQuery } from '../../../Store/Slice/checkerSliceApi';
 
 import styles from './new-card-form.m.css';
 import { useAddNewCardMutation } from '../../../Store/Slice/apiSlice';
-import { useDispatch, useSelector } from 'react-redux';
 
 const NewCardForm = () => {
-  // const dispatch = useDispatch();
-  // const data = dispatch(getCardScheme(5355));
-  // console.log(data);
-  const [checker, setChecker] = useState('');
-  const { data = {}, isError } = useGetCardSchemeQuery(checker);
-  // const [addNewCard] = useAddNewCardMutation();
+  const [getCardScheme] = useLazyGetCardSchemeQuery();
+  const [addNewCard] = useAddNewCardMutation();
+
   const handleSubmit = async (values, { resetForm }) => {
     const checkNum = Number(
-      values.cardNumber.toString().split('').slice(0, 6).join('')
+      values.cardNumber.toString().split('').slice(0, 8).join('')
     );
-    // const data = dispatch(getCardScheme(checkNum)).then((data) =>
-    //   console.log(data)
-    // );
-    setChecker(checkNum);
+
     try {
-      const newData = await data;
-      await addNewCard({ ...values, scheme: newData.scheme });
+      const { data } = await getCardScheme(checkNum);
+      await addNewCard({ ...values, scheme: data.scheme, type: data.type });
     } catch (e) {
       alert(`Sorry ${e.message}`);
     }

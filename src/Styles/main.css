@@ -81,6 +81,11 @@
 }
 
 .button__edit {
-  background: rgb(152, 151, 151);
+  background-color: rgb(152, 151, 151);
   font-size: 12px;
+}
+
+.button__copy {
+  background-color: rgb(118, 118, 250);
+  color: white;
 }

@@ -1,6 +1,7 @@
 .card__wrapper {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 .card__card {
   margin-right: 5px;
@@ -14,6 +15,7 @@
   background-image: url('https://images.unsplash.com/photo-1565711561500-49678a10a63f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   color: white;
   border-radius: 8px;
 }
@@ -21,4 +23,49 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.card__type {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-end;
+}
+
+.card__scheme {
+  width: 40px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__scheme > object {
+  width: 100%;
+}
+
+.card__number {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__copy {
+  position: relative;
+}
+.card__copy > span {
+  position: absolute;
+  bottom: -20px;
+  right: 0px;
+}
+
+.card__copy_btn {
+  border: none;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  height: 100%;
+  background-color: rgb(118, 118, 250);
+  color: white;
 }

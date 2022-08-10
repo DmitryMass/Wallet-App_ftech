@@ -30,11 +30,13 @@ const CardsMenu = () => {
         </Button>
         <Button modificator={'success'}>Додати готівку</Button>
       </nav>
-      {data.length === 0 ? (
-        <div>На данний час у вас немає банківських карт</div>
-      ) : (
-        data.map((card) => <CardItem key={nanoid()} card={card} />)
-      )}
+      <div>
+        {data.length === 0 ? (
+          <div>На данний час у вас немає банківських карт</div>
+        ) : (
+          data.map((card) => <CardItem key={nanoid()} card={card} />)
+        )}
+      </div>
       {modal ? <AddCardModal setModal={setModal} /> : null}
     </div>
   );
