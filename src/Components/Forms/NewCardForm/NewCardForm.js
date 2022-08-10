@@ -2,11 +2,8 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 
 import InputField from '../../InputField/InputField';
-import {
-  newCardValidation,
-  validateCard,
-} from '../../ValidationScheme/ValidationScheme';
-
+import { newCardValidation } from '../../ValidationScheme/ValidationScheme';
+import luhnCheck from '../../ValidationScheme/LuhnValidator';
 import { useLazyGetCardSchemeQuery } from '../../../Store/Slice/checkerSliceApi';
 
 import styles from './new-card-form.m.css';
@@ -21,6 +18,9 @@ const NewCardForm = () => {
       values.cardNumber.toString().split('').slice(0, 8).join('')
     );
     try {
+      if (!luhnCheck(values.cardNumber.toString())) {
+        throw new Error();
+      }
       const { data } = await getCardScheme(checkNum);
       await addNewCard({
         ...values,
