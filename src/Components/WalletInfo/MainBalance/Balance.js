@@ -9,7 +9,7 @@ import BalanceItem from './BalanceItem/BalanceItem';
 import CashBalance from './CashBalance/CashBalance';
 
 const Balance = () => {
-  const { balanceUAH, balanceUSD, balanceEUR, isLoading, isError } =
+  const { isLoading, isError, newBalanceUah, newBalanceEur, newBalanceUsd } =
     useCalculateAmount();
 
   return (
@@ -21,13 +21,13 @@ const Balance = () => {
         ) : (
           <div className={styles.balance__total}>
             <BalanceItem modificator={styles.balance__total_ua}>
-              - {new Intl.NumberFormat().format(balanceUAH)} UAH
+              - {new Intl.NumberFormat().format(newBalanceUah)} UAH
             </BalanceItem>
             <BalanceItem modificator={styles.balance__total_usd}>
-              - {new Intl.NumberFormat().format(balanceUSD)} USD
+              - {new Intl.NumberFormat().format(newBalanceUsd)} USD
             </BalanceItem>
             <BalanceItem modificator={styles.balance__total_eur}>
-              - {new Intl.NumberFormat().format(balanceEUR)} EUR
+              - {new Intl.NumberFormat().format(newBalanceEur)} EUR
             </BalanceItem>
           </div>
         )}
