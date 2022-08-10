@@ -9,7 +9,7 @@ import { useLazyGetCardSchemeQuery } from '../../../Store/Slice/checkerSliceApi'
 import styles from './new-card-form.m.css';
 import { useAddNewCardMutation } from '../../../Store/Slice/apiSlice';
 
-const NewCardForm = () => {
+const NewCardForm = ({ setModal }) => {
   const [getCardScheme] = useLazyGetCardSchemeQuery();
   const [addNewCard] = useAddNewCardMutation();
 
@@ -27,6 +27,7 @@ const NewCardForm = () => {
         scheme: data.scheme,
         type: data.type,
       });
+      setModal(false);
     } catch (e) {
       alert('Wrond Card Number');
     }
@@ -77,7 +78,7 @@ const NewCardForm = () => {
               placeholder='Type card cvv'
             />
           </div>
-          <div>
+          <div className={styles.form__amount}>
             <Field
               id='amount'
               name='amount'
@@ -86,6 +87,7 @@ const NewCardForm = () => {
               placeholder='Amount money'
             />
             <Field
+              className='form__select'
               component='select'
               id='currency'
               name='currency'
@@ -96,7 +98,18 @@ const NewCardForm = () => {
               <option value='EUR'>EUR</option>
             </Field>
           </div>
-          <button type='submit'>Submit</button>
+          <div className={styles.form__btnGroup}>
+            <button className='button button__success' type='submit'>
+              Додати картку
+            </button>
+            <button
+              className={`button button__form ${styles.form__btnCancel}`}
+              onClick={() => setModal(false)}
+              type='button'
+            >
+              Скасувати
+            </button>
+          </div>
         </Form>
       </Formik>
     </div>

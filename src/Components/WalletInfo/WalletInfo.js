@@ -2,7 +2,7 @@ import React from 'react';
 import MainBalance from './MainBalance';
 import MyCards from './MyCards/MyCards';
 
-import styles from './mainBalance.m.css';
+import styles from './wallet-info.m.css';
 import CardsMenu from '../CardsMenu/CardsMenu';
 
 const WalletInfo = () => {

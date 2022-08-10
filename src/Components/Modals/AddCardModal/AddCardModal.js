@@ -11,8 +11,8 @@ const AddCardModal = ({ setModal }) => {
         className={styles.modal__content}
         onClick={(e) => e.stopPropagation()}
       >
-        <Title>Додавання картки</Title>
-        <NewCardForm />
+        <Title modificator={'form'}>Додавання картки</Title>
+        <NewCardForm setModal={setModal} />
       </div>
     </div>
   );

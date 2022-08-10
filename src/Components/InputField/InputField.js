@@ -12,10 +12,10 @@ const InputField = ({
   const error = form.errors[name] && form.touched[name];
 
   return (
-    <div>
-      {error && <div className='error'>{form.errors[name]}</div>}
+    <div className={styles.input__wrapper}>
+      {error && <div className={styles.error}>{form.errors[name]}</div>}
       <input
-        className={error ? styles.input__error : 'input'}
+        className={error ? styles.input__error : styles.input}
         id={id}
         name={name}
         type={type ? type : 'text'}

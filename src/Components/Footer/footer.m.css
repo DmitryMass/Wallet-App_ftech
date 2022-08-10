@@ -1,3 +1,13 @@
 .footer {
-  min-height: 200px;
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #332a2a;
+}
+.footer__title {
+  color: white;
+}
+.footer__title > span {
+  font-weight: 500;
 }

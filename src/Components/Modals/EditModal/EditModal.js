@@ -21,7 +21,7 @@ const EditModal = ({ setEdit, handleSubmitModalForm }) => {
           validationSchema={editModalValidation}
         >
           <Form>
-            <div>
+            <div className={styles.edit__amount}>
               <Field
                 id='amount'
                 name='amount'
@@ -34,17 +34,22 @@ const EditModal = ({ setEdit, handleSubmitModalForm }) => {
                 id='currency'
                 name='currency'
                 type='select'
+                className='form__select'
               >
                 <option value='UAH'>UAH</option>
                 <option value='USD'>USD</option>
                 <option value='EUR'>EUR</option>
               </Field>
             </div>
-            <div>
-              <button type='submit' className={styles.edit__save}>
+            <div className={styles.edit__btnGroup}>
+              <button className='button button__success' type='submit'>
                 Зберегти
               </button>
-              <button type='button' onClick={setEdit}>
+              <button
+                className='button button__form'
+                type='button'
+                onClick={setEdit}
+              >
                 Скасувати
               </button>
             </div>
