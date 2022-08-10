@@ -2,7 +2,10 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 
 import InputField from '../../InputField/InputField';
-import { newCardValidation } from '../../ValidationScheme/ValidationScheme';
+import {
+  newCardValidation,
+  validateCard,
+} from '../../ValidationScheme/ValidationScheme';
 
 import { useLazyGetCardSchemeQuery } from '../../../Store/Slice/checkerSliceApi';
 
@@ -17,12 +20,15 @@ const NewCardForm = () => {
     const checkNum = Number(
       values.cardNumber.toString().split('').slice(0, 8).join('')
     );
-
     try {
       const { data } = await getCardScheme(checkNum);
-      await addNewCard({ ...values, scheme: data.scheme, type: data.type });
+      await addNewCard({
+        ...values,
+        scheme: data.scheme,
+        type: data.type,
+      });
     } catch (e) {
-      alert(`Sorry ${e.message}`);
+      alert('Wrond Card Number');
     }
     resetForm();
   };
@@ -60,9 +66,8 @@ const NewCardForm = () => {
             <Field
               id='date'
               name='date'
-              type='number'
               component={InputField}
-              placeholder='Type expire date'
+              placeholder='MM/YY'
             />
             <Field
               id='cvv'

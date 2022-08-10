@@ -1,24 +1,30 @@
 import React from 'react';
 
+import { nanoid } from 'nanoid';
+import { useGetAllCardsQuery } from '../../../Store/Slice/apiSlice';
+
 import Button from '../../Button';
 import Title from '../../Title/Title';
 
 import styles from './my-cards.m.css';
+import MyCardItem from './MyCardItem/my-card-item';
+import LoadAndError from '../../LoadingAndError/load-n-error';
 
 const MyCards = () => {
+  const { data = [], isLoading, isError } = useGetAllCardsQuery();
+
   return (
-    <div>
+    <div className={styles.cards__wrapper}>
       <Title modificator={'balance'}>Мої картки</Title>
-      <ul>
-        <li>
-          <span>Mono</span> <span>287.5 UAH</span>
-          <Button modificator={'edit'}>Редагувати</Button>
-        </li>
-        <li>
-          <span>Privat</span> <span>1000 USD</span>
-          <Button modificator={'edit'}>Редагувати</Button>
-        </li>
-      </ul>
+      {isLoading || isError ? (
+        <LoadAndError load={isLoading} error={isError} />
+      ) : (
+        <ul>
+          {data.map((el) => (
+            <MyCardItem key={nanoid()} card={el} />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

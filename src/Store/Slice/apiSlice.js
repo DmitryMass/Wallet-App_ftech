@@ -25,7 +25,18 @@ export const cardsApi = createApi({
       }),
       invalidatesTags: [{ type: 'Cards', id: 'LIST' }],
     }),
+    deleteCard: build.mutation({
+      query: (id) => ({
+        url: `/wallet/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: [{ type: 'Cards', id: 'LIST' }],
+    }),
   }),
 });
 
-export const { useGetAllCardsQuery, useAddNewCardMutation } = cardsApi;
+export const {
+  useGetAllCardsQuery,
+  useAddNewCardMutation,
+  useDeleteCardMutation,
+} = cardsApi;

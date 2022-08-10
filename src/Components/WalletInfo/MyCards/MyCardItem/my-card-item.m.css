@@ -1,0 +1,12 @@
+.card__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+.card__item > span {
+  margin-right: 5px;
+}
+.card__item > span:first-child {
+  margin-right: 15px;
+}

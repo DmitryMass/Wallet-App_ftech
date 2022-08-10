@@ -19,12 +19,17 @@
   color: white;
   border-radius: 8px;
 }
+
 .card__name {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  pointer-events: none;
 }
-
+.card__amount,
+.card__date {
+  pointer-events: none;
+}
 .card__type {
   display: flex;
   flex-direction: column;
@@ -57,6 +62,7 @@
   position: absolute;
   bottom: -20px;
   right: 0px;
+  font-size: 14px;
 }
 
 .card__copy_btn {
@@ -68,4 +74,16 @@
   height: 100%;
   background-color: rgb(118, 118, 250);
   color: white;
+  transform: scale(1);
+  transition: all 0.1s ease-in;
+}
+.card__copy_btn:hover {
+  transition: all 0.1s ease-in;
+
+  transform: scale(1.1);
+  box-shadow: 0px 0px 3px white;
+}
+
+.card__number_show {
+  cursor: pointer;
 }

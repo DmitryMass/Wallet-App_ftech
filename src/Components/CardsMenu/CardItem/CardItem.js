@@ -5,17 +5,26 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import mastercard from '../../../Assets/Icons/mastercard.svg';
 import visa from '../../../Assets/Icons/visa.svg';
 import styles from './card-item.m.css';
+import { useDeleteCardMutation } from '../../../Store/Slice/apiSlice';
 
 const CardItem = ({ card }) => {
   const { id, bank, cvv, currency, amount, date, cardNumber, scheme, type } =
     card;
+  const [deleteCard] = useDeleteCardMutation();
   const [copy, setCopy] = useState(false);
+  const [showCard, setShowCard] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       if (copy) setCopy(false);
     }, 2000);
   }, [copy]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (showCard) setShowCard(false);
+    }, 3000);
+  }, [showCard]);
 
   return (
     <div className={styles.card__wrapper}>
@@ -37,11 +46,31 @@ const CardItem = ({ card }) => {
             <span>{type}</span>
           </div>
         </div>
-        <div>
-          <span>{amount}</span> <span>{currency}</span>
+        <div className={styles.card__amount}>
+          <span>{new Intl.NumberFormat().format(amount)}</span>{' '}
+          <span>{currency}</span>
         </div>
         <div className={styles.card__number}>
-          <span>{cardNumber}</span>
+          <div
+            className={styles.card__number_show}
+            onClick={() => setShowCard(true)}
+          >
+            {showCard ? (
+              <span>
+                {cardNumber.toString().slice(0, 4)}{' '}
+                {cardNumber.toString().slice(5, 9)}{' '}
+                {cardNumber.toString().slice(10, 14)}{' '}
+                {cardNumber.toString().slice(12, 16)}
+              </span>
+            ) : (
+              <span>
+                {cardNumber.toString().slice(0, 4)}{' '}
+                {cardNumber.toString().slice(5, 9).replaceAll(/[0-9]/gi, '*')}{' '}
+                {cardNumber.toString().slice(10, 14).replaceAll(/[0-9]/gi, '*')}{' '}
+                {cardNumber.toString().slice(12, 16)}
+              </span>
+            )}
+          </div>
           <div className={styles.card__copy}>
             <CopyToClipboard text={cardNumber} onCopy={() => setCopy(true)}>
               <button className={styles.card__copy_btn}>Copy</button>
@@ -49,9 +78,14 @@ const CardItem = ({ card }) => {
             {copy ? <span>Copied</span> : null}
           </div>
         </div>
-        <div>{date}</div>
+        <div className={styles.card__date}>{date}</div>
       </div>
-      <Button modificator={'reversal'}>Видалити</Button>
+      <Button
+        handleClick={async () => await deleteCard(id)}
+        modificator={'reversal'}
+      >
+        Видалити
+      </Button>
     </div>
   );
 };

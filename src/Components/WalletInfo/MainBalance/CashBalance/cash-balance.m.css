@@ -1,13 +1,11 @@
-.balance__overall {
+.cash__wrapper {
   padding: 15px;
   border-radius: 8px;
   background-color: white;
   margin-bottom: 10px;
 }
-.balance__total {
+.cash__balance {
   margin: 15px 0;
-}
-.balance__total {
   display: flex;
   flex-direction: column;
   gap: 10px;
