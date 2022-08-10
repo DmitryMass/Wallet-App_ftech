@@ -9,6 +9,7 @@
 5. Module CSS - для стилей
 6. Webpack/Babel для сборки проекта
 7. Деплой у netlify/
+8. PropTypes
 
 Реализованный функционал
 

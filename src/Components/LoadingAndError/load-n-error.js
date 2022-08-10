@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const LoadAndError = ({ load, error }) => {
   if (load) {
@@ -7,6 +8,11 @@ const LoadAndError = ({ load, error }) => {
   if (error) {
     return <div>Error</div>;
   }
+};
+
+LoadAndError.propTypes = {
+  load: PropTypes.bool,
+  error: PropTypes.bool,
 };
 
 export default LoadAndError;

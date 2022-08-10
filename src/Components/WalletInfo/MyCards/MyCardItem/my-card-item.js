@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useUpdateCardMutation } from '../../../../Store/Slice/apiSlice';
 import Button from '../../../Button';
 import EditModal from '../../../Modals/EditModal/EditModal';
+import PropTypes from 'prop-types';
 
 import styles from './my-card-item.m.css';
 
@@ -44,6 +45,14 @@ const MyCardItem = ({ card }) => {
       ) : null}
     </>
   );
+};
+
+MyCardItem.propTypes = {
+  card: PropTypes.shape({
+    amount: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    scheme: PropTypes.string.isRequired,
+  }),
 };
 
 export default MyCardItem;

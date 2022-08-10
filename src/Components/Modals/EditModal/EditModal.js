@@ -4,6 +4,7 @@ import InputField from '../../InputField/InputField';
 
 import styles from './edit-modal.m.css';
 import { editModalValidation } from '../../ValidationScheme/ValidationScheme';
+import PropTypes from 'prop-types';
 
 const EditModal = ({ setEdit, handleSubmitModalForm }) => {
   return (
@@ -58,6 +59,11 @@ const EditModal = ({ setEdit, handleSubmitModalForm }) => {
       </div>
     </div>
   );
+};
+
+EditModal.propTypes = {
+  setEdit: PropTypes.func.isRequired,
+  handleSubmitModalForm: PropTypes.func.isRequired,
 };
 
 export default EditModal;

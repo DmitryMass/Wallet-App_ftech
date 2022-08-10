@@ -5,8 +5,8 @@ import {
   useUpdateSelectedCashMutation,
 } from '../../../../../Store/Slice/cashSlice';
 import Button from '../../../../Button';
-import LoadAndError from '../../../../LoadingAndError/load-n-error';
 import EditModal from '../../../../Modals/EditModal/EditModal';
+import PropTypes from 'prop-types';
 
 import styles from '../cash-balance.m.css';
 
@@ -54,6 +54,10 @@ const CashItem = ({ cash }) => {
       ) : null}
     </>
   );
+};
+
+CashItem.propTypes = {
+  cash: PropTypes.object,
 };
 
 export default CashItem;

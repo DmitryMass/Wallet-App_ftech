@@ -7,13 +7,14 @@ import visa from '../../../Assets/Icons/visa.svg';
 import styles from './card-item.m.css';
 import { useDeleteCardMutation } from '../../../Store/Slice/apiSlice';
 
+import PropTypes from 'prop-types';
+
 const CardItem = ({ card }) => {
   const { id, bank, cvv, currency, amount, date, cardNumber, scheme, type } =
     card;
   const [deleteCard] = useDeleteCardMutation();
   const [copy, setCopy] = useState(false);
   const [showCard, setShowCard] = useState(false);
-
   useEffect(() => {
     setTimeout(() => {
       if (copy) setCopy(false);
@@ -88,6 +89,19 @@ const CardItem = ({ card }) => {
       </Button>
     </div>
   );
+};
+
+CardItem.propTypes = {
+  card: PropTypes.shape({
+    id: PropTypes.any.isRequired,
+    bank: PropTypes.string.isRequired,
+    cvv: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    amount: PropTypes.number.isRequired,
+    date: PropTypes.string.isRequired,
+    cardNumber: PropTypes.number.isRequired,
+    scheme: PropTypes.string.isRequired,
+  }),
 };
 
 export default CardItem;

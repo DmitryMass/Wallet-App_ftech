@@ -13,6 +13,7 @@ const Button = ({ children, modificator, handleClick }) => {
 Button.propTypes = {
   children: PropTypes.string.isRequired,
   modificator: PropTypes.string,
+  handleClick: PropTypes.func,
 };
 
 export default Button;

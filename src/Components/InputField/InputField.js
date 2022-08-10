@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './input-field.m.css';
+import PropTypes from 'prop-types';
 
 const InputField = ({
   field: { onChange, onBlur, name, value },
@@ -26,6 +27,19 @@ const InputField = ({
       />
     </div>
   );
+};
+
+InputField.propTypes = {
+  field: PropTypes.shape({
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.any.isRequired,
+  }),
+  form: PropTypes.object,
+  type: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
 
 export default InputField;
