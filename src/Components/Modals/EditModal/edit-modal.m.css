@@ -1,0 +1,14 @@
+.edit__save {
+  background-color: rgb(9, 185, 9);
+  padding: 10px 20px;
+  font-size: 18px;
+  line-height: 21px;
+  transform: scale(1);
+  transition: all 0.2s linear;
+}
+
+.edit__save:hover {
+  box-shadow: inset 0px 0px 4px rgb(0, 98, 37);
+  transform: scale(1.1);
+  transition: all 0.2s linear;
+}

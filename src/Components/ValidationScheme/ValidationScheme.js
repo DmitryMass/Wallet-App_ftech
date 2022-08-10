@@ -35,3 +35,13 @@ export const newCardValidation = yup.object().shape({
     .label('Date format MM/YY')
     .required('Expiration date is required'),
 });
+
+export const editModalValidation = yup.object().shape({
+  amount: yup
+    .string()
+    .label('Amount money')
+    .min(1)
+    .matches(/^\d+(\.\d{0,2})?$/, 'Wrong money format ex: 1234.25')
+    .required(),
+  currency: yup.string().label('Currency').required(),
+});

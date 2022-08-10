@@ -75,17 +75,42 @@
   padding: 10px 20px;
   font-size: 18px;
   line-height: 21px;
+  transform: scale(1);
+  transition: all 0.2s linear;
+}
+.button__success:hover {
+  box-shadow: inset 0px 0px 4px rgb(0, 98, 37);
+  transform: scale(1.1);
+  transition: all 0.2s linear;
 }
 .button__reversal {
+  transform: scale(1);
+  transition: all 0.2s linear;
   background-color: rgb(184, 2, 2);
 }
-
+.button__reversal:hover {
+  background-color: rgb(226, 15, 15);
+  transform: scale(1.1);
+  transition: all 0.2s linear;
+}
 .button__edit {
+  transform: scale(1);
+  transition: all 0.2s linear;
   background-color: rgb(152, 151, 151);
   font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.button__edit:hover {
+  transition: all 0.2s ease-out;
+  box-shadow: inset 0 0 6px rgb(6, 6, 6);
+  transform: scale(1.1);
+  transition: all 0.2s linear;
 }
 
 .button__copy {
+  transform: scale(1);
+  transition: all 0.2s linear;
   background-color: rgb(118, 118, 250);
   color: white;
 }

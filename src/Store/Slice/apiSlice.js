@@ -25,6 +25,14 @@ export const cardsApi = createApi({
       }),
       invalidatesTags: [{ type: 'Cards', id: 'LIST' }],
     }),
+    updateCard: build.mutation({
+      query: ({ id, ...body }) => ({
+        url: `/wallet/${id}`,
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Cards', id: 'LIST' }],
+    }),
     deleteCard: build.mutation({
       query: (id) => ({
         url: `/wallet/${id}`,
@@ -39,4 +47,5 @@ export const {
   useGetAllCardsQuery,
   useAddNewCardMutation,
   useDeleteCardMutation,
+  useUpdateCardMutation,
 } = cardsApi;
