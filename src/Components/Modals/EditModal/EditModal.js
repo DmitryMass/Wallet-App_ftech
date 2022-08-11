@@ -6,7 +6,10 @@ import styles from './edit-modal.m.css';
 import { editModalValidation } from '../../ValidationScheme/ValidationScheme';
 import PropTypes from 'prop-types';
 
+import { useTranslation } from 'react-i18next';
+
 const EditModal = ({ setEdit, handleSubmitModalForm }) => {
+  const { t } = useTranslation();
   return (
     <div className={styles.edit__modal} onClick={setEdit}>
       <div
@@ -28,7 +31,7 @@ const EditModal = ({ setEdit, handleSubmitModalForm }) => {
                 name='amount'
                 type='number'
                 component={InputField}
-                placeholder='Amount money'
+                placeholder={t('amount')}
               />
               <Field
                 component='select'
@@ -44,14 +47,14 @@ const EditModal = ({ setEdit, handleSubmitModalForm }) => {
             </div>
             <div className={styles.edit__btnGroup}>
               <button className='button button__success' type='submit'>
-                Зберегти
+                {t('save')}
               </button>
               <button
                 className='button button__form'
                 type='button'
                 onClick={setEdit}
               >
-                Скасувати
+                {t('cancel')}
               </button>
             </div>
           </Form>

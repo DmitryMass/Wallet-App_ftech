@@ -7,7 +7,10 @@ import PropTypes from 'prop-types';
 
 import styles from './my-card-item.m.css';
 
+import { useTranslation } from 'react-i18next';
+
 const MyCardItem = ({ card }) => {
+  const { t } = useTranslation();
   const [edit, setEdit] = useState(false);
   const hanldeEditTrue = () => setEdit(true);
   const handleEditFalse = () => setEdit(false);
@@ -33,7 +36,7 @@ const MyCardItem = ({ card }) => {
           {amount} {currency}
         </span>
         <Button handleClick={hanldeEditTrue} modificator={'edit'}>
-          Редагувати
+          {t('edit')}
         </Button>
       </li>
       {edit ? (

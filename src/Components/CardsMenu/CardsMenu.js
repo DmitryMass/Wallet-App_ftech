@@ -15,7 +15,10 @@ import LoadAndError from '../LoadingAndError/load-n-error';
 import EditModal from '../Modals/EditModal/EditModal';
 import { useAddNewCashMutation } from '../../Store/Slice/cashSlice';
 
+import { useTranslation } from 'react-i18next';
+
 const CardsMenu = () => {
+  const { t } = useTranslation();
   const [modal, setModal] = useState(false);
   const [cashModal, setCashModal] = useState(false);
   const { data = [], isLoading, isError } = useGetAllCardsQuery();
@@ -50,18 +53,18 @@ const CardsMenu = () => {
               handleClick={() => setModal((prev) => !prev)}
               modificator={'success'}
             >
-              Додати картку
+              {t('new_card')}
             </Button>
             <Button
               handleClick={() => setCashModal((prev) => !prev)}
               modificator={'success'}
             >
-              Додати готівку
+              {t('new_cash')}
             </Button>
           </nav>
           <div>
             {data.length === 0 ? (
-              <div>На данний час у вас немає банківських карт</div>
+              <div>{t('no_cash')}</div>
             ) : (
               data.map((card) => <CardItem key={nanoid()} card={card} />)
             )}

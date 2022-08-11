@@ -9,7 +9,10 @@ import { useLazyGetCardSchemeQuery } from '../../../Store/Slice/checkerSliceApi'
 import styles from './new-card-form.m.css';
 import { useAddNewCardMutation } from '../../../Store/Slice/apiSlice';
 
+import { useTranslation } from 'react-i18next';
+
 const NewCardForm = ({ setModal }) => {
+  const { t } = useTranslation();
   const [getCardScheme] = useLazyGetCardSchemeQuery();
   const [addNewCard] = useAddNewCardMutation();
 
@@ -53,14 +56,14 @@ const NewCardForm = ({ setModal }) => {
             id='bank'
             name='bank'
             component={InputField}
-            placeholder='Mono, privat etc'
+            placeholder={t('nameCard')}
           />
           <Field
             id='cardNumber'
             name='cardNumber'
             type='number'
             component={InputField}
-            placeholder='Type your card number'
+            placeholder={t('cardNum')}
           />
 
           <div>
@@ -68,14 +71,14 @@ const NewCardForm = ({ setModal }) => {
               id='date'
               name='date'
               component={InputField}
-              placeholder='MM/YY'
+              placeholder={t('cardDate')}
             />
             <Field
               id='cvv'
               name='cvv'
               type='number'
               component={InputField}
-              placeholder='Type card cvv'
+              placeholder={t('cardCvv')}
             />
           </div>
           <div className={styles.form__amount}>
@@ -84,7 +87,7 @@ const NewCardForm = ({ setModal }) => {
               name='amount'
               type='number'
               component={InputField}
-              placeholder='Amount money'
+              placeholder={t('amount')}
             />
             <Field
               className='form__select'
@@ -100,14 +103,14 @@ const NewCardForm = ({ setModal }) => {
           </div>
           <div className={styles.form__btnGroup}>
             <button className='button button__success' type='submit'>
-              Додати картку
+              {t('new_card')}
             </button>
             <button
               className={`button button__form ${styles.form__btnCancel}`}
               onClick={() => setModal(false)}
               type='button'
             >
-              Скасувати
+              {t('cancel')}
             </button>
           </div>
         </Form>

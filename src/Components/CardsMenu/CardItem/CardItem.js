@@ -8,8 +8,10 @@ import styles from './card-item.m.css';
 import { useDeleteCardMutation } from '../../../Store/Slice/apiSlice';
 
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 const CardItem = ({ card }) => {
+  const { t } = useTranslation();
   const { id, bank, cvv, currency, amount, date, cardNumber, scheme, type } =
     card;
   const [deleteCard] = useDeleteCardMutation();
@@ -74,9 +76,9 @@ const CardItem = ({ card }) => {
           </div>
           <div className={styles.card__copy}>
             <CopyToClipboard text={cardNumber} onCopy={() => setCopy(true)}>
-              <button className={styles.card__copy_btn}>Копіювати</button>
+              <button className={styles.card__copy_btn}>{t('copy')}</button>
             </CopyToClipboard>
-            {copy ? <span>Copied</span> : null}
+            {copy ? <span>{t('copied')}</span> : null}
           </div>
         </div>
         <div className={styles.card__date}>{date}</div>
@@ -85,7 +87,7 @@ const CardItem = ({ card }) => {
         handleClick={async () => await deleteCard(id)}
         modificator={'reversal'}
       >
-        Видалити
+        {t('delete')}
       </Button>
     </div>
   );

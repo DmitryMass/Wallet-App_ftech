@@ -8,14 +8,17 @@ import styles from './balance.m.css';
 import BalanceItem from './BalanceItem/BalanceItem';
 import CashBalance from './CashBalance/CashBalance';
 
+import { useTranslation } from 'react-i18next';
+
 const Balance = () => {
+  const { t } = useTranslation();
   const { isLoading, isError, newBalanceUah, newBalanceEur, newBalanceUsd } =
     useCalculateAmount();
 
   return (
     <div className={styles.balance__container}>
       <div className={styles.balance__overall}>
-        <Title modificator={'balance'}>Баланс</Title>
+        <Title modificator={'balance'}>{t('balance')}</Title>
         {isLoading || isError ? (
           <LoadAndError load={isLoading} error={isError} />
         ) : (
