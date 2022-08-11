@@ -20,6 +20,7 @@ const NewCardForm = ({ setModal }) => {
     const checkNum = Number(
       values.cardNumber.toString().split('').slice(0, 8).join('')
     );
+    const bank = values.bank.replace(/\s+/g, ' ').trim();
     try {
       if (!luhnCheck(values.cardNumber.toString())) {
         throw new Error();
@@ -27,6 +28,7 @@ const NewCardForm = ({ setModal }) => {
       const { data } = await getCardScheme(checkNum);
       await addNewCard({
         ...values,
+        bank,
         scheme: data.scheme,
         type: data.type,
       });

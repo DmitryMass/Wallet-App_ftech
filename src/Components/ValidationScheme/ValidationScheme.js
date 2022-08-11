@@ -26,7 +26,8 @@ export const newCardValidation = yup.object().shape({
     .string()
     .label('Amount money')
     .min(1)
-    .matches(/^\d+(\.\d{0,2})?$/, 'Wrong money format ex: 1234.25')
+    .max(10)
+    .matches(/^[0-9\s]+(\.\d{0,2})*$/g, 'Wrong money format ex: 1234.25')
     .required(),
   currency: yup.string().label('Currency').required(),
   date: yup
