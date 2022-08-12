@@ -72,6 +72,7 @@ const NewCardForm = ({ setModal }) => {
             <Field
               id='date'
               name='date'
+              type='text'
               component={InputField}
               placeholder={t('cardDate')}
             />

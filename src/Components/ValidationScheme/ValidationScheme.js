@@ -32,9 +32,56 @@ export const newCardValidation = yup.object().shape({
   currency: yup.string().label('Currency').required(),
   date: yup
     .string()
-    .matches(/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/, 'Date format MM/YY')
-    .label('Date format MM/YY')
-    .required('Expiration date is required'),
+    .label('Date is')
+    .typeError('Not a valid expiration date. Example: MM/YY')
+    .max(5, 'Not a valid expiration date. Example: MM/YY')
+    .matches(
+      /([0-9]{2})\/([0-9]{2})/,
+      'Not a valid expiration date. Example: MM/YY'
+    )
+    .required('Expiration date is required')
+    .test((date) => {
+      if (!date) {
+        return false;
+      }
+      const today = new Date();
+      const monthToday = today.getMonth() + 1;
+      const yearToday = today.getFullYear().toString().substr(-2);
+
+      const calculateMaxDate = Date.now() + 315576000000;
+      const maxDate = new Date(calculateMaxDate);
+      const maxMonth = maxDate.getMonth() + 1;
+      const maxYear = maxDate.getFullYear().toString().substr(-2);
+
+      const [expMonth, expYear] = date.split('/');
+
+      if (Number(expYear) < Number(yearToday)) {
+        return false;
+      } else if (
+        Number(expMonth) < monthToday &&
+        Number(expYear) <= Number(yearToday)
+      ) {
+        return false;
+      } else if (Number(expYear) > Number(maxYear)) {
+        return false;
+      } else if (
+        Number(expMonth) > Number(maxMonth) &&
+        Number(expYear) >= Number(maxYear)
+      ) {
+        return false;
+      }
+      return true;
+    })
+    .test((date) => {
+      if (!date) {
+        return false;
+      }
+      const [expMonth] = date.split('/');
+      if (Number(expMonth) > 12) {
+        return false;
+      }
+      return true;
+    }),
 });
 
 export const editModalValidation = yup.object().shape({
